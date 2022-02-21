@@ -1,0 +1,36 @@
+server:
+  port : ${PORT_SERVICE:8081}
+#  servlet:
+#    context-path: /api/v1/authentication/
+#zuul:
+#  routes:
+#    user-service:
+#      path: /**
+#      url: http://localhost:8081/api/v1/users/
+#      stripPrefix: true
+spring:
+  application:
+    name: zuul-gateway
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://library-registry-service:8761/eureka
+app:
+  jwtType:
+    token: Bearer
+  jwtSecret:
+    token: squad3
+  jwtExpirationInMs:
+    token: 3000000
+  role:
+    reader: ROLE_reader
+    admin: ROLE_admin
+  token:
+    type: JWT
+    role:
+      reader: reader
+      admin: admin
